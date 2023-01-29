@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PAEEFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comandas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mesa" Type="int" />
+          <Property Name="Platos" Type="int" />
+        </EntityType>
+        <EntityType Name="Ingredientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero" Type="int" />
+          <Property Name="Comensales" Type="int" />
+        </EntityType>
+        <EntityType Name="Platos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Ingredientes" Type="nvarchar" MaxLength="200" />
+          <Property Name="Precio" Type="float" />
+          <Property Name="Categoria" Type="int" />
+        </EntityType>
+        <Association Name="FK__Comandas__Mesa__2D27B809">
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="0..1" />
+          <End Role="Comandas" Type="Self.Comandas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comandas">
+              <PropertyRef Name="Mesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comandas__Platos__2E1BDC42">
+          <End Role="Platos" Type="Self.Platos" Multiplicity="0..1" />
+          <End Role="Comandas" Type="Self.Comandas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comandas">
+              <PropertyRef Name="Platos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platos__Categori__267ABA7A">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Platos" Type="Self.Platos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Platos">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAEEFinalModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comandas" EntityType="Self.Comandas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredientes" EntityType="Self.Ingredientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platos" EntityType="Self.Platos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Comandas__Mesa__2D27B809" Association="Self.FK__Comandas__Mesa__2D27B809">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="Comandas" EntitySet="Comandas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comandas__Platos__2E1BDC42" Association="Self.FK__Comandas__Platos__2E1BDC42">
+            <End Role="Platos" EntitySet="Platos" />
+            <End Role="Comandas" EntitySet="Comandas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platos__Categori__267ABA7A" Association="Self.FK__Platos__Categori__267ABA7A">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Platos" EntitySet="Platos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAEEFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Platos" Relationship="Self.FK__Platos__Categori__267ABA7A" FromRole="Categorias" ToRole="Platos" />
+        </EntityType>
+        <EntityType Name="Comanda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mesa" Type="Int32" />
+          <Property Name="Platos" Type="Int32" />
+          <NavigationProperty Name="Mesa1" Relationship="Self.FK__Comandas__Mesa__2D27B809" FromRole="Comandas" ToRole="Mesas" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK__Comandas__Platos__2E1BDC42" FromRole="Comandas" ToRole="Platos" />
+        </EntityType>
+        <EntityType Name="Ingrediente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="Comensales" Type="Int32" />
+          <NavigationProperty Name="Comandas" Relationship="Self.FK__Comandas__Mesa__2D27B809" FromRole="Mesas" ToRole="Comandas" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Ingredientes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Precio" Type="Double" />
+          <Property Name="Categoria" Type="Int32" />
+          <NavigationProperty Name="Categoria1" Relationship="Self.FK__Platos__Categori__267ABA7A" FromRole="Platos" ToRole="Categorias" />
+          <NavigationProperty Name="Comandas" Relationship="Self.FK__Comandas__Platos__2E1BDC42" FromRole="Platos" ToRole="Comandas" />
+        </EntityType>
+        <Association Name="FK__Platos__Categori__267ABA7A">
+          <End Role="Categorias" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Platos" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Platos">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comandas__Mesa__2D27B809">
+          <End Role="Mesas" Type="Self.Mesa" Multiplicity="0..1" />
+          <End Role="Comandas" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comandas">
+              <PropertyRef Name="Mesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comandas__Platos__2E1BDC42">
+          <End Role="Platos" Type="Self.Plato" Multiplicity="0..1" />
+          <End Role="Comandas" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comandas">
+              <PropertyRef Name="Platos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAEEFinalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Comandas" EntityType="Self.Comanda" />
+          <EntitySet Name="Ingredientes" EntityType="Self.Ingrediente" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesa" />
+          <EntitySet Name="Platos" EntityType="Self.Plato" />
+          <AssociationSet Name="FK__Platos__Categori__267ABA7A" Association="Self.FK__Platos__Categori__267ABA7A">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Platos" EntitySet="Platos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comandas__Mesa__2D27B809" Association="Self.FK__Comandas__Mesa__2D27B809">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="Comandas" EntitySet="Comandas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comandas__Platos__2E1BDC42" Association="Self.FK__Comandas__Platos__2E1BDC42">
+            <End Role="Platos" EntitySet="Platos" />
+            <End Role="Comandas" EntitySet="Comandas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PAEEFinalModelStoreContainer" CdmEntityContainer="PAEEFinalEntities1">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="PAEEFinalModel.Categoria">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comandas">
+            <EntityTypeMapping TypeName="PAEEFinalModel.Comanda">
+              <MappingFragment StoreEntitySet="Comandas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mesa" ColumnName="Mesa" />
+                <ScalarProperty Name="Platos" ColumnName="Platos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredientes">
+            <EntityTypeMapping TypeName="PAEEFinalModel.Ingrediente">
+              <MappingFragment StoreEntitySet="Ingredientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesas">
+            <EntityTypeMapping TypeName="PAEEFinalModel.Mesa">
+              <MappingFragment StoreEntitySet="Mesas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Comensales" ColumnName="Comensales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platos">
+            <EntityTypeMapping TypeName="PAEEFinalModel.Plato">
+              <MappingFragment StoreEntitySet="Platos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Ingredientes" ColumnName="Ingredientes" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

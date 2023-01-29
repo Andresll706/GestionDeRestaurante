@@ -1,0 +1,143 @@
+﻿<Page x:Class="PAEE_FINAL.PageTables"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PAEE_FINAL"
+      xmlns:p="clr-namespace:PAEE_FINAL.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="800"
+      Title="PageTables">
+    <Page.Resources>
+        <CollectionViewSource x:Key="tablesViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Mesa}, CreateList=True}"/>
+    </Page.Resources>
+    <Grid DataContext="{StaticResource tablesViewSource}">
+        <Grid x:Name="gridHeader">
+            <Label x:Name="lblTitle" Content="{x:Static p:Resources.tables}" 
+                   HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="btnAdd" HorizontalAlignment="Left"
+                    Margin="688,50,0,0" VerticalAlignment="Top" Width="91"
+                    Height="30" Style="{StaticResource Buttons}" Click="BtnAdd">
+                <StackPanel Width="77" Height="30" Orientation="Horizontal">
+                    <Image Source="Resources/add.png" Height="20"></Image>
+                    <TextBlock x:Name="textBlockAdd" VerticalAlignment="Center" FontFamily="Verdana"
+                     FontWeight="Bold" FontSize="14" Text="{x:Static p:Resources.add}"></TextBlock>
+                </StackPanel>
+            </Button>
+            <TextBox  x:Name="textSearch" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,50,0,0" Height="30" Width="300" />
+            <Button x:Name="btnSearch" Content="{x:Static p:Resources.search}"
+                    HorizontalAlignment="Left" Margin="370,50,0,0"
+                    VerticalAlignment="Top" Width="75" Height="30"
+                    Style="{StaticResource Buttons}"
+                    Click="BtnSearchOnClick"/>
+        </Grid>
+        <DataGrid x:Name="gridListTables" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="5,100,5,5" RowDetailsVisibilityMode="VisibleWhenSelected"
+                  FontSize="14" FontFamily="Verdana" IsReadOnly="True" AlternatingRowBackground="LightGray"  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="{x:Static p:Resources.code}" Width="Auto"/>
+                <DataGridTextColumn x:Name="numberColumn" Binding="{Binding Numero}" Header="{x:Static p:Resources.numberTable}" Width="150"/>
+                <DataGridTextColumn x:Name="dinersColumn" Binding="{Binding Comensales}" Header="{x:Static p:Resources.diners}" Width="125"/>
+                <DataGridTemplateColumn Header="" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnEdit" Background="White" Foreground="#000033" FontFamily="Verdana"
+                                            FontWeight="Bold" Margin="0,0,5,0" Click="BtnEdit_Click">
+                                    <StackPanel>
+                                        <Image Source="Resources/edit.png" Height="20" Width="20"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button x:Name="btnDelete" Background="White" Foreground="#000033" FontFamily="Verdana"
+                                            FontWeight="Bold" Click="BtnDelete_Click">
+                                    <StackPanel>
+                                        <Image Source="Resources/delete.png" Height="20" Width="20"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Grid x:Name="gridAddTable" Margin="5,-393,3.6,453"
+              Background="White">
+            <Label x:Name="lblAddTable" Content="{x:Static p:Resources.addTable}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Button x:Name="btnBackAdd" Content="{x:Static p:Resources.back}"
+                    HorizontalAlignment="Left" Margin="694,250,0,0"
+                    VerticalAlignment="Top" Width="74" Height="30" 
+                    Style="{StaticResource Buttons}" 
+                    Click="BtnBackAddOnClick"/>
+            <Grid x:Name="gridDetalle2" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="263" Width="770">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="lblnumberNewTable" Content="{x:Static p:Resources.number}" Grid.Column="1" HorizontalAlignment="Left" Margin="0.6,3,0,3" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBox x:Name="numberNewTable" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="3,4,0,4" Grid.Row="0"  VerticalAlignment="Center" Width="120"/>
+
+                <Label  x:Name="lbldinersNewTable"  Content="{x:Static p:Resources.diners}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBox  x:Name="dinersNewTable" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="3.8,6,-524.8,6.8" Grid.Row="1"  VerticalAlignment="Center" Width="120"/>
+            </Grid>
+            <Button x:Name="btnAddTable" Content="{x:Static p:Resources.add}"
+                    HorizontalAlignment="Left" Margin="596,250,0,0"
+                    VerticalAlignment="Top" Width="74" Height="30"
+                    Style="{StaticResource Buttons}"
+                    Click="BtnAddTableOnClick"/>
+        </Grid>
+
+        <Grid x:Name="gridEditTables" Margin="5,432,3.6,-372"
+              Background="White">
+            <Label x:Name="lblEditTitle" Content="{x:Static p:Resources.tablesEdit}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Grid x:Name="gridEdit" HorizontalAlignment="Left" VerticalAlignment="Top" Height="263" Margin="-1,52,0,0" Width="770">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="lblnumberEdit" Content="{x:Static p:Resources.number}" Grid.Column="1" HorizontalAlignment="Left"
+                        Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center"
+                        FontSize="14" FontWeight="Bold"/>
+                <TextBox x:Name="numberTextBoxEdit" Grid.Column="2"
+                        HorizontalAlignment="Left" Height="28" Text="{Binding Numero, Mode=TwoWay, NotifyOnValidationError=true,ValidatesOnExceptions=true}" Margin="10,35,-2,23" Grid.Row="1"
+                        VerticalAlignment="Center" Width="119" FontSize="16"/>
+
+                <Label x:Name="lbldinersEdit" Content="{x:Static p:Resources.diners}" HorizontalAlignment="Left"
+                        Margin="10,91,0,-39" Grid.Row="1" VerticalAlignment="Center"
+                        FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                <TextBox x:Name="dinerTextBoxEdit" Grid.Column="2"
+                        HorizontalAlignment="Left" Height="26" Margin="10,95,0,-33"
+                        Grid.Row="1" VerticalAlignment="Center" Width="119"
+                        Text="{Binding Comensales, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                        FontSize="16"/>
+            </Grid>
+
+            <Button x:Name="btnEditProd" Content="{x:Static p:Resources.modify}"
+                    HorizontalAlignment="Left" Margin="600,238,0,0"
+                    VerticalAlignment="Top" Width="75" Height="30" Style="{StaticResource Buttons}" Click="btnEditOnClick"/>
+
+            <Button x:Name="btnVolverEdit" Content="{x:Static p:Resources.back}"
+                    HorizontalAlignment="Left" Margin="695,238,0,0"
+                    VerticalAlignment="Top" Width="74" Height="30" 
+                    Style="{StaticResource Buttons}" Click="BtnEditBack"/>
+        </Grid>
+
+
+    </Grid>
+</Page>

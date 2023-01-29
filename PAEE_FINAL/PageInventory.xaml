@@ -1,0 +1,126 @@
+﻿<Page x:Class="PAEE_FINAL.PageInventory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PAEE_FINAL"
+      xmlns:p="clr-namespace:PAEE_FINAL.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageInventory">
+    <Page.Resources>
+        <CollectionViewSource x:Key="ingredientsViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Ingrediente}, CreateList=True}"/>
+    </Page.Resources>
+    <Grid>
+        <Grid DataContext="{StaticResource ingredientsViewSource}">
+            <Grid x:Name="gridHeader">
+                <Label x:Name="lblTitle" Content="{x:Static p:Resources.ingredient}" 
+                   HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <Button x:Name="btnAdd" HorizontalAlignment="Left"
+                    Margin="691,50,0,0" VerticalAlignment="Top" Width="91"
+                    Height="30" Style="{StaticResource Buttons}" Click="BtnAdd">
+                    <StackPanel Width="77" Height="30" Orientation="Horizontal">
+                        <Image Source="Resources/add.png" Height="20"></Image>
+                        <TextBlock x:Name="textBlockAdd" VerticalAlignment="Center" FontFamily="Verdana"
+                     FontWeight="Bold" FontSize="14" Text="{x:Static p:Resources.add}"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <TextBox  x:Name="textSearch" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,50,0,0" Height="30" Width="300" />
+                <Button x:Name="btnSearch" Content="{x:Static p:Resources.search}"
+                    HorizontalAlignment="Left" Margin="370,50,0,0"
+                    VerticalAlignment="Top" Width="75" Height="30"
+                    Style="{StaticResource Buttons}"
+                    Click="BtnSearchOnClick"/>
+            </Grid>
+            <DataGrid x:Name="gridListIngredient" Style="{StaticResource Tables}" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="5,100,5,5" RowDetailsVisibilityMode="VisibleWhenSelected"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="{x:Static p:Resources.code}" Width="Auto"/>
+                    <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Nombre}" Header="{x:Static p:Resources.name}" Width="100"/>
+                    <DataGridTemplateColumn Header="" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="6,0,0,0">
+                                    <Button x:Name="btnEdit" Background="White" Foreground="#000033" FontFamily="Verdana"
+                                            FontWeight="Bold" Margin="0,0,5,0" Click="BtnEdit_Click">
+                                        <StackPanel>
+                                            <Image Source="Resources/edit.png" Height="20" Width="20"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button x:Name="btnDelete" Background="White" Foreground="#000033" FontFamily="Verdana"
+                                            FontWeight="Bold" Click="BtnDelete_Click">
+                                        <StackPanel>
+                                            <Image Source="Resources/delete.png" Height="20" Width="20"/>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <Grid x:Name="gridAddIngredient" Margin="5,-393,3.6,453"
+              Background="White">
+                <Label x:Name="lblAddIngredient" Content="{x:Static p:Resources.add}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                <Button x:Name="btnBackAdd" Content="{x:Static p:Resources.back}"
+                    HorizontalAlignment="Left" Margin="694,250,0,0"
+                    VerticalAlignment="Top"  Style="{StaticResource Buttons}"
+                    Width="74" Height="30" Click="BtnBackAddOnClick"/>
+                <Grid x:Name="gridDetalle2" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="263" Width="770">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblnameNewIngredient" Content="{x:Static p:Resources.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0.6,3,0,3" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="nameNewIngredient" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="3,4,0,4" Grid.Row="0"  VerticalAlignment="Center" Width="120"/>
+                </Grid>
+                <Button x:Name="btnAddIngredient" Content="{x:Static p:Resources.add}"
+                    HorizontalAlignment="Left" Margin="596,250,0,0"
+                    VerticalAlignment="Top" Style="{StaticResource Buttons}" 
+                    Width="74" Height="30" FontFamily="Verdana"
+                    Click="BtnAddIngredientOnClick"/>
+            </Grid>
+
+            <Grid x:Name="gridEditIngredient" Margin="5,432,3.6,-372"
+              Background="White">
+                <Label x:Name="lblEditTitle" Content="{x:Static p:Resources.edit}" HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                <Grid x:Name="gridEdit" HorizontalAlignment="Left" VerticalAlignment="Top" Height="263" Margin="-1,52,0,0" Width="770">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label   x:Name="lblnameEdit" Content="{x:Static p:Resources.name}" Grid.Column="1" HorizontalAlignment="Left"
+                        Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center"
+                        FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="nameTextBoxEdit" Grid.Column="2" Height="28" Text="{Binding Nombre, Mode=TwoWay, NotifyOnValidationError=true,ValidatesOnExceptions=true}" Margin="9,32,-284,29"
+                        VerticalAlignment="Center" FontSize="16"/>
+                </Grid>
+
+                <Button x:Name="btnEditIngredient" Content="{x:Static p:Resources.modify}"
+                    HorizontalAlignment="Left" Margin="600,238,0,0"
+                    VerticalAlignment="Top" Style="{StaticResource Buttons}" Width="75" Height="30" Click="btnEditOnClick"/>
+
+                <Button x:Name="btnVolverEdit" Content="{x:Static p:Resources.back}"
+                    HorizontalAlignment="Left" Margin="695,238,0,0"
+                    VerticalAlignment="Top" Style="{StaticResource Buttons}"
+                    Width="74" Height="30" Click="BtnEditBack"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="addCommand" xml:space="preserve">
+    <value>Añadir comanda</value>
+  </data>
+  <data name="addCorrect" xml:space="preserve">
+    <value>Añadido correctamente!</value>
+  </data>
+  <data name="addMeal" xml:space="preserve">
+    <value>Añadir Plato</value>
+  </data>
+  <data name="addTable" xml:space="preserve">
+    <value>Añadir Mesa</value>
+  </data>
+  <data name="askDelete" xml:space="preserve">
+    <value>¿Estás seguro de borrar este elemento</value>
+  </data>
+  <data name="attention" xml:space="preserve">
+    <value>¡Atención!</value>
+  </data>
+  <data name="back" xml:space="preserve">
+    <value>Atrás</value>
+  </data>
+  <data name="background" xml:space="preserve">
+    <value>Fondo :</value>
+  </data>
+  <data name="buttons" xml:space="preserve">
+    <value>Botones </value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="colors" xml:space="preserve">
+    <value>Colores</value>
+  </data>
+  <data name="command" xml:space="preserve">
+    <value>Comanda</value>
+  </data>
+  <data name="commandEdit" xml:space="preserve">
+    <value>Editar Comanda</value>
+  </data>
+  <data name="commands" xml:space="preserve">
+    <value>Comandas</value>
+  </data>
+  <data name="configuration" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="deleteCorrect" xml:space="preserve">
+    <value>borrado corretamente</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="diners" xml:space="preserve">
+    <value>Comensales</value>
+  </data>
+  <data name="dish" xml:space="preserve">
+    <value>Plato</value>
+  </data>
+  <data name="dishes" xml:space="preserve">
+    <value>Platos</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="editCorrect" xml:space="preserve">
+    <value>Editado correctamente. </value>
+  </data>
+  <data name="english" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="errorAdded" xml:space="preserve">
+    <value>Error añadiendo el elemento. Causa: </value>
+  </data>
+  <data name="errorDelete" xml:space="preserve">
+    <value>Error borrando el elemento. Causa: </value>
+  </data>
+  <data name="errorEdited" xml:space="preserve">
+    <value>Error editanto el elemento. Causa:</value>
+  </data>
+  <data name="french" xml:space="preserve">
+    <value>Francés</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="ingredient" xml:space="preserve">
+    <value>Ingrediente</value>
+  </data>
+  <data name="inventory" xml:space="preserve">
+    <value>Inventario</value>
+  </data>
+  <data name="lenguages" xml:space="preserve">
+    <value>Idiomas</value>
+  </data>
+  <data name="meals" xml:space="preserve">
+    <value>Platos</value>
+  </data>
+  <data name="mealsEdit" xml:space="preserve">
+    <value>Editar Plato</value>
+  </data>
+  <data name="menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="missingData" xml:space="preserve">
+    <value>¡Faltan datos!</value>
+  </data>
+  <data name="modify" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="number" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="numberTable" xml:space="preserve">
+    <value>Número de mesa</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="subTitle2Home" xml:space="preserve">
+    <value>Esperamos ser de utilidad para su negocio.</value>
+  </data>
+  <data name="subTitleHome" xml:space="preserve">
+    <value>Este es el administrador de su restaurante, aquí podrá añadir y gestionar sus mesas, inventarios, comandas.</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>Mesa</value>
+  </data>
+  <data name="tables" xml:space="preserve">
+    <value>Mesas</value>
+  </data>
+  <data name="tablesEdit" xml:space="preserve">
+    <value>Editar Mesas</value>
+  </data>
+  <data name="tablesT" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="texts" xml:space="preserve">
+    <value>Textos</value>
+  </data>
+  <data name="titleHome" xml:space="preserve">
+    <value>¡Bienvenido!</value>
+  </data>
+</root>
